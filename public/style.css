@@ -1,0 +1,49 @@
+
+body{
+    padding: 0px;
+    margin: 0px;
+}
+
+nav{
+    height: 100px;
+    background-color: lightseagreen;
+}
+
+a{
+    text-decoration: none;
+    font-size: 1.2em;
+    color: black;
+}
+
+li{
+    list-style: none;
+}
+
+#nav-menu{
+    display: flex;
+    width: 50%;
+    height: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.nav-boton{
+    padding: 10px;
+}
+.nav-boton:hover{
+    background-color: rgba(0, 255, 255, 0.202);
+}
+
+/* TABLAS */
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+table, th, td {
+    border: 1px solid;
+    border-collapse: collapse;
+    
+  }
