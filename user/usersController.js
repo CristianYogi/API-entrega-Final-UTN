@@ -133,7 +133,7 @@ const login = async (req, res, next) => {
             if (await checkPassword(req.body.password, result[0].password)) {
                 const user = {
                     id: result[0]._id,
-                    name: result[0].name,
+                    name: result[0].nombre,
                     email: result[0].email
                 }
 
@@ -143,7 +143,7 @@ const login = async (req, res, next) => {
                 }
 
                 res.status(200).json({message: `Te logeaste como ${
-                        user.name
+                        user.nombre
                     }.`, Token_Info: tokenData})
 
             } else {
@@ -174,7 +174,7 @@ const forgotPass = async(req, res, next) => {
 
         const user = {
             id: response[0]._id,
-            name: response[0].name,
+            name: response[0].nombre,
             email: response[0].email
         }
         const token = await tokenSing(user, '15m')

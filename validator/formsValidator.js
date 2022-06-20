@@ -5,7 +5,13 @@ const validatorCreateUser = [
         .trim()
         .isAlpha('es-ES',{ignore: ' '}).withMessage("Solo letras por favor")//HAY QUE METER LA CODIFICACION
         .exists().withMessage("El campo nombre debe existir")
-        .isLength({min: 2, max: 90}).withMessage("La longitud minima es de 2 caracteres"),
+        .isLength({min: 2, max: 20}).withMessage("La longitud minima es de 2 caracteres"),
+
+        check("apellido")
+        .trim()
+        .isAlpha('es-ES',{ignore: ' '}).withMessage("Solo letras por favor")//HAY QUE METER LA CODIFICACION
+        .exists().withMessage("El campo apellido debe existir")
+        .isLength({min: 2, max: 20}).withMessage("La longitud minima es de 2 caracteres"),
 
     check("email")
         .normalizeEmail()
@@ -16,7 +22,7 @@ const validatorCreateUser = [
     .trim()
     .isAlpha('es-ES',{ignore: ' '}).withMessage("Solo letras por favor")
     .exists().withMessage("El campo nombre debe existir")
-    .isLength({min: 2, max: 90}).withMessage("La longitud minima es de 2 caracteres"),
+    .isLength({min: 2, max: 20}).withMessage("La longitud minima es de 2 caracteres"),
 
     check("password")
         .trim()
