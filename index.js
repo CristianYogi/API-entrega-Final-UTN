@@ -11,10 +11,6 @@ const path = require('path')
 const port = process.env.PORT || 8000
 
 
-server.use(cors({
-    origin: 'https://front-entrega-final.herokuapp.com'
-    // origin:'*'
-}));
 
 
 server.use(express.static('public'))
@@ -27,6 +23,10 @@ server.set('view engine', 'ejs');
 server.use(express.json())
 server.use(express.urlencoded({extended: true})) 
 
+server.use(cors({
+    origin: 'https://front-entrega-final.herokuapp.com'
+    // origin:'*'
+}));
 //PRIMER RESPUESTA
 server.get("/", (req, res) => {
     res.status(200).json({message : "funca"})
