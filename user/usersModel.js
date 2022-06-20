@@ -3,10 +3,11 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
 const UserSchema = new Schema({
-    name: {type: String, required: true},
+    nombre: {type: String, required: true},
     userName: {type: String, required: true, unique: true},
     email: {type: String, required: true, unique: true},
-    password: {type: String, required: true}
+    password: {type: String, required: true},
+    telefono: {type: Number}
 },
     {timestamps: true} //crea campos de el momento en que fue creado o actualizado
 )

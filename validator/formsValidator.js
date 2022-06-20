@@ -1,7 +1,7 @@
 const {check, validationResult} = require('express-validator')
 
 const validatorCreateUser = [
-    check("name")
+    check("nombre")
         .trim()
         .isAlpha('es-ES',{ignore: ' '}).withMessage("Solo letras por favor")//HAY QUE METER LA CODIFICACION
         .exists().withMessage("El campo nombre debe existir")
