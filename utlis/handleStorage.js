@@ -5,6 +5,7 @@ const storage = multer.diskStorage({
         
         const pathStorage = `${__dirname}/../img_storage/users`
         console.log("pathStorage",pathStorage)
+        req.body.hola ="xD"
         callback(null, pathStorage)
     },
     filename:(req, file, callback) => {
