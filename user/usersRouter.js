@@ -9,7 +9,7 @@ const fileUpload = require("../utlis/handleStorage")
 //OBTENER USUARIO
 router.get("/", getAllUsers)
 
-router.post("/register" , fileUpload.single('file'), validatorCreateUser, registerUser)
+router.post("/register" , validatorCreateUser, registerUser)
 
 router.get("/login", (req, res) => {
     res.render("login.ejs", {datos : ""})

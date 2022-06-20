@@ -8,7 +8,8 @@ const UserSchema = new Schema({
     userName: {type: String, required: true, unique: true},
     email: {type: String, required: true, unique: true},
     password: {type: String, required: true},
-    phoneNumber: {type: Number}
+    phoneNumber: {type: Number},
+    file: {type: File}
 },
     {timestamps: true} //crea campos de el momento en que fue creado o actualizado
 )
