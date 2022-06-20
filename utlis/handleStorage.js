@@ -2,6 +2,7 @@ var multer = require('multer');
   
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
+        console.log("funca")
         cb(null, 'uploads')
     },
     filename: (req, file, cb) => {
@@ -9,6 +10,6 @@ var storage = multer.diskStorage({
     }
 });
   
- const upload = multer({ storage: storage });
+ let upload = multer({ storage: storage });
 
  module.exports = upload
