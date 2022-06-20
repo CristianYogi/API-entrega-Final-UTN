@@ -10,16 +10,13 @@ const path = require('path')
 const port = process.env.PORT || 8000
 server.use(cors({origin: true}));
 
-const corsOptions = {
-    origin: 'https://front-entrega-final.herokuapp.com',
-    optionsSuccessStatus: 200 
+var corsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 200,
   }
+app.use(cors(corsOptions));
+app.use(express.json())
 
-server.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
 
 server.use(express.static('public'))
 
@@ -37,7 +34,7 @@ server.get("/", (req, res) => {
 })
 
 //USERS
-server.use("/users", cors(corsOptions), require("./user/usersRouter"))
+server.use("/users", require("./user/usersRouter"))
 
 server.use("/productos", require("./productos/productosRouter"))
 
