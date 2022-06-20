@@ -52,6 +52,7 @@ server.use((req, res, next) => {
     let error = new Error()
     error.status = 404
     error.message = "Resourse Not Found"
+    console.log("ENTRA ACA")
     next(error)
 })
 
