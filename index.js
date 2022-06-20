@@ -10,13 +10,6 @@ const path = require('path')
 const port = process.env.PORT || 8000
 server.use(cors({origin: true}));
 
-var corsOptions = {
-    origin: '*',
-    optionsSuccessStatus: 200,
-  }
-app.use(cors(corsOptions));
-app.use(express.json())
-
 
 server.use(express.static('public'))
 
@@ -27,6 +20,14 @@ server.set('view engine', 'ejs');
 
 server.use(express.json())
 server.use(express.urlencoded({extended: true})) 
+
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "YOUR-DOMAIN.TLD"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    console.log(":D")
+    next();
+  });
 
 //PRIMER RESPUESTA
 server.get("/", (req, res) => {
