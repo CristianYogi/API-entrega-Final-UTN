@@ -2,7 +2,7 @@ var multer = require('multer');
   
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        console.log("funca")
+        
         cb(null, 'uploads')
     },
     filename: (req, file, cb) => {

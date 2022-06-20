@@ -2,7 +2,7 @@ const {send} = require("express/lib/response")
 const {User} = require("./usersModel")
 const imgModel = require("./userImgModel")
 const nodemailer = require("nodemailer")
-
+const fs = require('fs');
 const {hashPassword, checkPassword} = require("../utlis/passwordHandler")
 
 const {tokenSing, tokenVerify} = require("../utlis/jwt")
