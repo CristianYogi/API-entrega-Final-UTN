@@ -1,6 +1,6 @@
 const {send} = require("express/lib/response")
 const {User} = require("./usersModel")
-
+const imgModel = require("./userImgModel")
 const nodemailer = require("nodemailer")
 
 const {hashPassword, checkPassword} = require("../utlis/passwordHandler")
@@ -89,6 +89,24 @@ const updateUser = async (req, res, next) => {
 const registerUser = async (req, res, next) => {
     console.log("BODY", req.body)
     console.log("REQ.FILE", req.file)
+
+    var obj = {
+        img: {
+            data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+            contentType: 'image/png'
+        }
+    }
+
+    imgModel.create(obj, (err, item) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            // item.save();
+            res.redirect('/');
+        }
+    });
+
     const password = await hashPassword(req.body.password)
 
     const newUser = new User({
