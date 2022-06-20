@@ -1,5 +1,6 @@
 require("dotenv").config()
 require("./db/config")
+
 const cors = require('cors');
 
 const express = require("express")
@@ -8,7 +9,11 @@ const server = express()
 const path = require('path')
 
 const port = process.env.PORT || 8000
-server.use(cors({origin: true}));
+
+
+server.use(cors({
+    origin: 'https://front-entrega-final.herokuapp.com'
+}));
 
 
 server.use(express.static('public'))
@@ -22,12 +27,12 @@ server.use(express.json())
 server.use(express.urlencoded({extended: true})) 
 
 
-server.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "YOUR-DOMAIN.TLD"); // update to match the domain you will make the request from
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    console.log(":D")
-    next();
-  });
+// server.use(function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "YOUR-DOMAIN.TLD"); // update to match the domain you will make the request from
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     console.log(":D")
+//     next();
+//   });
 
 //PRIMER RESPUESTA
 server.get("/", (req, res) => {
