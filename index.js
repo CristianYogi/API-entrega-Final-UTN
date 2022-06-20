@@ -31,7 +31,10 @@ server.use(cors({
 }));
 
 server.use((req, res, next) => {
-    res.header['Access-Control-Allow-Origin'] = "*"
+    req.headers['Access-Control-Allow-Origin'] = "*"
+    console.log("entra")
+    console.log(req.body)
+    next()
 })
 //PRIMER RESPUESTA
 server.get("/", (req, res) => {
