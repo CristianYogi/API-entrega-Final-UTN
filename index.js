@@ -8,7 +8,7 @@ const server = express()
 const path = require('path')
 
 const port = process.env.PORT || 8000
-// server.use(cors());
+server.use(cors({origin: true}));
 
 const corsOptions = {
     origin: 'https://front-entrega-final.herokuapp.com',
