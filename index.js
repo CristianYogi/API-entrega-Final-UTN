@@ -16,6 +16,12 @@ server.use(express.static('public'))
 server.set('views', path.join(__dirname, 'views'))
 server.set('view engine', 'ejs');
 
+server.use((req,res,next)=>{
+    res.setHeader('Access-Control-Allow-Origin','*');
+    res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE');
+    res.setHeader('Access-Control-Allow-Methods','Content-Type','Authorization');
+    next(); 
+})
 
 server.use(express.json())
 server.use(express.urlencoded({extended: true})) 
