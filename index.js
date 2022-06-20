@@ -8,7 +8,12 @@ const server = express()
 const path = require('path')
 
 const port = process.env.PORT || 8000
-server.use(cors());
+// server.use(cors());
+
+const corsOptions = {
+    origin: 'https://front-entrega-final.herokuapp.com',
+    optionsSuccessStatus: 200 
+  }
 
 server.use(express.static('public'))
 
@@ -16,12 +21,6 @@ server.use(express.static('public'))
 server.set('views', path.join(__dirname, 'views'))
 server.set('view engine', 'ejs');
 
-server.use((req,res,next)=>{
-    res.setHeader('Access-Control-Allow-Origin','*');
-    res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE');
-    res.setHeader('Access-Control-Allow-Methods','Content-Type','Authorization');
-    next(); 
-})
 
 server.use(express.json())
 server.use(express.urlencoded({extended: true})) 
@@ -32,7 +31,7 @@ server.get("/", (req, res) => {
 })
 
 //USERS
-server.use("/users", require("./user/usersRouter"))
+server.use("/users", cors(corsOptions), require("./user/usersRouter"))
 
 server.use("/productos", require("./productos/productosRouter"))
 
