@@ -87,7 +87,8 @@ const updateUser = async (req, res, next) => {
 
 
 const registerUser = async (req, res, next) => {
-    console.log('LLEGO')
+    console.log("BODY", req.body)
+    console.log("REQ.FILE", req.file)
     const password = await hashPassword(req.body.password)
 
     const newUser = new User({
@@ -96,7 +97,6 @@ const registerUser = async (req, res, next) => {
     })
     newUser.save((error, result) => {
         if (error) {
-            console.log(error)
             res.send(error)
         } else {
             res.status(200).json({message: "Usuario Registrado"})
