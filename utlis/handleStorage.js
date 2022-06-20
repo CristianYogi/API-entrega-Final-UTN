@@ -9,6 +9,7 @@ const storage = multer.diskStorage({
     filename:(req, file, callback) => {
         const ext = file.originalname.split(".").pop()
         const filename = `img-${Date.now()}.${ext}`
+        console.log(filename)
         callback(null, filename)
     }
 })
