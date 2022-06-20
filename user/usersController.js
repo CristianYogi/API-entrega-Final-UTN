@@ -99,7 +99,7 @@ const registerUser = async (req, res, next) => {
 
     imgModel.create(obj, (err, item) => {
         if (err) {
-            console.log(err);
+            console.log("primerError",err);
         }
         else {
             // item.save();
