@@ -24,7 +24,8 @@ server.use(express.json())
 server.use(express.urlencoded({extended: true})) 
 
 server.use(cors({
-    origin: 'https://front-entrega-final.herokuapp.com'
+    origin: ['https://front-entrega-final.herokuapp.com'],
+    credentials: true
     // origin:'*'
 }));
 //PRIMER RESPUESTA
