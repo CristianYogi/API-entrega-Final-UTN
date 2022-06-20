@@ -90,22 +90,22 @@ const registerUser = async (req, res, next) => {
     console.log("BODY", req.body)
     console.log("REQ.FILE", req.file)
 
-    var obj = {
-        img: {
-            data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
-            contentType: 'image/png'
-        }
-    }
+    // var obj = {
+    //     img: {
+    //         data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+    //         contentType: 'image/png'
+    //     }
+    // }
 
-    imgModel.create(obj, (err, item) => {
-        if (err) {
-            console.log("primerError",err);
-        }
-        else {
-            // item.save();
-            res.redirect('/');
-        }
-    });
+    // imgModel.create(obj, (err, item) => {
+    //     if (err) {
+    //         console.log("primerError",err);
+    //     }
+    //     else {
+    //         // item.save();
+    //         res.redirect('/');
+    //     }
+    // });
 
     const password = await hashPassword(req.body.password)
 
