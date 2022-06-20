@@ -3,12 +3,13 @@ const { render } = require("express/lib/response")
 const { validatorCreateUser , validatorLoginUser, validatorResetearPass} = require("../validator/formsValidator")
 const { getAllUsers, registerUser , getUserById, updateUser, deleteUser, login, forgotPass, formResetPass, newPass} = require("./usersController")
 const isAuth = require("../middleware/isAuth")
-const  handleStorage = require('../utlis/handleStorage')
+const fileUpload = require("../utlis/handleStorage")
+
 
 //OBTENER USUARIO
 router.get("/", getAllUsers)
 
-router.post("/register" , handleStorage, validatorCreateUser, registerUser)
+router.post("/register" , fileUpload.single('file'), validatorCreateUser, registerUser)
 
 router.get("/login", (req, res) => {
     res.render("login.ejs", {datos : ""})
