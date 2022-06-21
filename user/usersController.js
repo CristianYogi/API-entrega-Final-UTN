@@ -139,7 +139,7 @@ const login = async (req, res, next) => {
                     id: result[0]._id,
                     name: result[0].nombre,
                     email: result[0].email,
-                    img: result[0].img.link
+                    img: result[0].img[0].link
                     
                 }
 
