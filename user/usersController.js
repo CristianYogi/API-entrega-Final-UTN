@@ -86,7 +86,7 @@ const updateUser = async (req, res, next) => {
 
 
 const registerUser = async (req, res, next) => {
-    console.log("hola")
+
     const password = await hashPassword(req.body.password)
 
     const newUser = new User({
