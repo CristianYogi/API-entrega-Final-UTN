@@ -10,6 +10,7 @@ const UserSchema = new Schema({
     email: {type: String, required: true, unique: true},
     password: {type: String, required: true},
     phoneNumber: {type: Number},
+    img: [{link : String, deleteHash: String, id: String}]
 },
     {timestamps: true} //crea campos de el momento en que fue creado o actualizado
 )
