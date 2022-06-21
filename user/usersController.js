@@ -94,7 +94,8 @@ const registerUser = async (req, res, next) => {
         userName: req.body.userName,
         email: req.body.email,
         phoneNumber: req.body.phoeNumber,
-        password
+        password,
+        img : req.body.img
     })
     newUser.save((error, result) => {
         if (error) {
