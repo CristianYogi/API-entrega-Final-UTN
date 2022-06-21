@@ -86,6 +86,7 @@ const updateUser = async (req, res, next) => {
 
 
 const registerUser = async (req, res, next) => {
+    console.log("hola")
     const password = await hashPassword(req.body.password)
 
     const newUser = new User({
@@ -129,7 +130,7 @@ const deleteUser = async (req, res, next) => {
 }
 
 const login = async (req, res, next) => {
-    console.log(req.body.userName)
+    
     try {
         const result = await User.find({userName: req.body.userName})
 
