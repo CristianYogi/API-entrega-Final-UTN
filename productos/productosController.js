@@ -17,9 +17,27 @@ const postProductos = async (req, res, next) => {
 
 }
 
-const getAllProductos = async (req, res, next) => {
 
+const getProductById = async (req, res, next) => {
     try {
+        const result = await Productos.findById(req.params.id)
+
+        if (result) {
+            res.status(200).json(result)
+        } else {
+
+            return next()
+        }
+
+    } catch (error) {
+        error.status = '500'
+        error.message = 'Internal Server Error'
+        next()
+    }
+}
+
+const getAllProductos = async (req, res, next) => {
+    try {   
         const productoData = {
             __v: 0,
             createdAt: 0,
@@ -43,14 +61,14 @@ const getAllProductos = async (req, res, next) => {
 }
 
 const getProductoByTitle = async (req, res, next) => {
-
-    try {
+    
+    try {   
         const productoData = {
             __v: 0,
             createdAt: 0,
             updatedAt: 0
         }
-        const result = await Productos.find({title: req.params.title}, productoData)
+        const result = await Productos.find({title: {$regex : req.params.title}}, productoData)
         
         if (result.length) {
             res.status(200).json({result})
@@ -70,5 +88,6 @@ const getProductoByTitle = async (req, res, next) => {
 module.exports = {
     postProductos,
     getAllProductos,
-    getProductoByTitle
+    getProductoByTitle,
+    getProductById
 }
