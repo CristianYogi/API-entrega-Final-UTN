@@ -100,10 +100,10 @@ const registerUser = async (req, res, next) => {
     })
     newUser.save((error, result) => {
         if (error) {
-            console.log("errror", error)
             res.send(error)
         } else {
-            res.status(200).json({message: "Usuario Registrado"})
+            res.headers = {"Access-Control-Allow-Origin" : '*'}
+            res.status(200).json({message: "Registrado Correctamente"})
         }
     })
 
