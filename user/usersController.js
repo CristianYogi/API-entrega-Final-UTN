@@ -102,6 +102,7 @@ const registerUser = async (req, res, next) => {
     
     newUser.save((error, result) => {
         if (error) {
+            console.log(error)
             error.status = 500
             error.message = "Hubo un error al registrar."
             next(error)
