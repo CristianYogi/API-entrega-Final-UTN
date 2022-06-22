@@ -86,7 +86,8 @@ const updateUser = async (req, res, next) => {
 
 
 const registerUser = async (req, res, next) => {
-
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    
     const password = await hashPassword(req.body.password)
 
     const newUser = new User({
@@ -98,10 +99,12 @@ const registerUser = async (req, res, next) => {
         password,
         img : req.body.img
     })
+    
     newUser.save((error, result) => {
         if (error) {
             res.send(error)
         } else {
+            
             res.status(200).json({message: "Registrado Correctamente"})
         }
     })
