@@ -106,7 +106,7 @@ const registerUser = async (req, res, next) => {
             error.message = "Hubo un error al registrar."
             next(error)
         } else {
-            
+            console.log(result)
             res.status(200).json({status:200 ,message: "Registrado Correctamente"})
         }
     })
