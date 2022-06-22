@@ -102,7 +102,6 @@ const registerUser = async (req, res, next) => {
         if (error) {
             res.send(error)
         } else {
-            res.headers = {"Access-Control-Allow-Origin" : '*'}
             res.status(200).json({message: "Registrado Correctamente"})
         }
     })
