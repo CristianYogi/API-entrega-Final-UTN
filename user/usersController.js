@@ -86,7 +86,7 @@ const updateUser = async (req, res, next) => {
 
 
 const registerUser = async (req, res, next) => {
-    res.setHeader('Access-Control-Allow-Credentials', true);
+    ;
     
     const password = await hashPassword(req.body.password)
 
@@ -102,10 +102,10 @@ const registerUser = async (req, res, next) => {
     
     newUser.save((error, result) => {
         if (error) {
-            res.send(error)
+            res.setHeader('Access-Control-Allow-Credentials', true).send(error)
         } else {
             
-            res.status(200).json({message: "Registrado Correctamente"})
+            res.setHeader('Access-Control-Allow-Credentials', true).status(200).json({message: "Registrado Correctamente"})
         }
     })
 
