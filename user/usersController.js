@@ -103,8 +103,21 @@ const registerUser = async (req, res, next) => {
     newUser.save((error, result) => {
         if (error) {
             console.log(error)
+    
+            if(error.keyPattern.userName){
+                error.status = 401
+                error.message = "Nombre de Usuario Registrado."
+                return next(error)
+            }
+            if(error.keyPattern.email){
+                error.status = 401
+                error.message = "Email ya registrado."
+                return next(error)
+            }
+            
             error.status = 500
             error.message = "Hubo un error al registrar."
+            
             next(error)
         } else {
             console.log(result)
