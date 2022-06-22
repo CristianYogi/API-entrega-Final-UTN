@@ -1,15 +1,17 @@
 const Productos = require("./productosModel")
 
 const postProductos = async (req, res, next) => {
-
+    console.log(req.body)
     const newProductos = new Productos({
         ...req.body
     })
     newProductos.save((error, result) => {
         if (error) {
+            res.status = 500
+            res.message = "Hubo un error al cargar el producto."
             res.send(error)
         } else {
-            res.status(200).json({message: "Se cargo correctamente"})
+            res.status(200).json({message: "Producto Cargado Correctamente"})
         }
     })
 
