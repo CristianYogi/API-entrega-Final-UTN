@@ -102,9 +102,12 @@ const registerUser = async (req, res, next) => {
     
     newUser.save((error, result) => {
         if (error) {
-            res.send(error)
+            error.status = 500
+            error.message = "Hubo un error al registrar."
+            next(error)
         } else {
-            res.status(200).json({message: "Registrado Correctamente"})
+            
+            res.status(200).json({status:200 ,message: "Registrado Correctamente"})
         }
     })
 
