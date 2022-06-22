@@ -13,7 +13,9 @@ const port = process.env.PORT || 8000
 // server.options('*', cors())
 
 server.use(cors({
-    origin: ['https://front-entrega-final.herokuapp.com', "http://192.168.0.213:3000"]
+    origin: ['https://front-entrega-final.herokuapp.com', "http://192.168.0.213:3000"],
+    credentials: true,
+    methods:["GET" , "POST" , "PUT", "DELETE"],
     // origin:'*'
 }));
 

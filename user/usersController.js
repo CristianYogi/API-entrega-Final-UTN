@@ -102,10 +102,10 @@ const registerUser = async (req, res, next) => {
     
     newUser.save((error, result) => {
         if (error) {
-            res.setHeader('Access-Control-Allow-Credentials', true).send(error)
+            res.send(error)
         } else {
             
-            res.setHeader('Access-Control-Allow-Credentials', true).status(200).json({message: "Registrado Correctamente"})
+            res.status(200).json({message: "Registrado Correctamente"})
         }
     })
 
