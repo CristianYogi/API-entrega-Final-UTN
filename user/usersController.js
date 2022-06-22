@@ -151,7 +151,7 @@ const login = async (req, res, next) => {
                 }
 
                 res.status(200).json({message: `Te logeaste como ${
-                        user.nombre
+                        user.name
                     }.`, Token_Info: tokenData, status: 200})
 
             } else {
