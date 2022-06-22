@@ -104,7 +104,6 @@ const registerUser = async (req, res, next) => {
         if (error) {
             res.send(error)
         } else {
-            
             res.status(200).json({message: "Registrado Correctamente"})
         }
     })
@@ -153,7 +152,7 @@ const login = async (req, res, next) => {
 
                 res.status(200).json({message: `Te logeaste como ${
                         user.nombre
-                    }.`, Token_Info: tokenData})
+                    }.`, Token_Info: tokenData, status: 200})
 
             } else {
                 let error = new Error("Contraseña incorrecta")
