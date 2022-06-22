@@ -7,8 +7,6 @@ const options = {
     maxPoolSize: 10,
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true,
-    autoIndex: true, 
 }
 
 mongoose.connect(uri, options, (err) => {
