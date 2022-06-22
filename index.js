@@ -10,12 +10,12 @@ const path = require('path')
 
 const port = process.env.PORT || 8000
 
-server.options('*', cors())
+// server.options('*', cors())
 
-// server.use(cors({
-//     origin: ['https://front-entrega-final.herokuapp.com', "http://192.168.0.213:3000"]
-//     // origin:'*'
-// }));
+server.use(cors({
+    origin: ['https://front-entrega-final.herokuapp.com', "http://192.168.0.213:3000"]
+    // origin:'*'
+}));
 
 
 server.use(express.static('public'))
