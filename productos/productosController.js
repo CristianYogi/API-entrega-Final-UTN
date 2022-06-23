@@ -38,7 +38,7 @@ const getProductById = async (req, res, next) => {
 
 const getProductsByCriteria = async(req, res, next) => {
     const data = {
-        categoria: req.params.categoria !== 'todo' ? req.params.categoria : "",
+        categoria: req.params.categoria != 'Todo' ? req.params.categoria : "",
         min: req.params.min || 0,
         max: req.params.max || 50000
     }
