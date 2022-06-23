@@ -1,7 +1,6 @@
 const Productos = require("./productosModel")
 
 const postProductos = async (req, res, next) => {
-    console.log(req.body)
     const newProductos = new Productos({
         ...req.body
     })
