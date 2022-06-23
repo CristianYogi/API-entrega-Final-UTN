@@ -18,7 +18,7 @@ router.get("/login", (req, res) => {
 router.post("/login", validatorLoginUser, login)
 
 
-router.get("/:id", isAuth, getUserById)
+router.get("/perfil", isAuth, getUserById)
 
 
 router.put("/:id", updateUser)

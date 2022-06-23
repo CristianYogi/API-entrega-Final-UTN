@@ -85,9 +85,7 @@ const getUserById = async (req, res, next) => {
                     pipeline: [
                         {$project: {__v: 0, _id: 0, userId: 0, createdAt: 0, updatedAt: 0}}
                     ]
-                }
-
-                    
+                }        
             },
             {$project: {createdAt:0, updatedAt: 0, __v: 0}}
 
