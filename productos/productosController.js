@@ -1,8 +1,10 @@
 const Productos = require("./productosModel")
+const mongoose = require('mongoose');
 
 const postProductos = async (req, res, next) => {
     const newProductos = new Productos({
-        ...req.body
+        ...req.body,
+        userId: new mongoose.mongo.ObjectId(req.body.userId)
     })
     newProductos.save((error, result) => {
         if (error) {

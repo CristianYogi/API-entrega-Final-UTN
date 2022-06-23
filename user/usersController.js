@@ -6,6 +6,8 @@ const data = require('../storage/infoExtra.json')
 const {hashPassword, checkPassword} = require("../utlis/passwordHandler")
 
 const {tokenSing, tokenVerify} = require("../utlis/jwt")
+const Productos = require("../productos/productosModel")
+const { default: mongoose } = require("mongoose")
 
 
 const transport = nodemailer.createTransport({
@@ -50,24 +52,60 @@ const getAllUsers = async (req, res, next) => {
 
 }
 
+// const getUserById = async (req, res, next) => {
+//     try {
+//         const result = await User.findById(req.params.id)
+
+//         if (result) {
+//             res.status(200).json(result)
+//         } else {
+
+//             return next()
+//         }
+
+//     } catch (error) {
+//         error.status = '500'
+//         error.message = 'Internal Server Error'
+//         next()
+//     }
+// }
+
+
 const getUserById = async (req, res, next) => {
     try {
-        const result = await User.findById(req.params.id)
+        const result = await User.aggregate(
+[            {$match: {_id: mongoose.mongo.ObjectId(req.token.id)}},
+            {
+                $lookup:
+                {
+                    from: "Productos",
+                    localField: "_id",
+                    foreignField: "userId",
+                    as: "productos",
+                    pipeline: [
+                        {$project: {__v: 0, _id: 0, userId: 0, createdAt: 0, updatedAt: 0}}
+                    ]
+                }
 
-        if (result) {
-            res.status(200).json(result)
-        } else {
+                    
+            },
+            {$project: {createdAt:0, updatedAt: 0, __v: 0}}
 
-            return next()
-        }
-
-    } catch (error) {
+            ]
+            )
+            if (result) {
+                res.status(200).json(result)
+            } else {
+                return next()
+            }
+            
+        } catch (error) {
+        console.log(error)
         error.status = '500'
         error.message = 'Internal Server Error'
-        next()
+        next(error)
     }
 }
-
 
 const updateUser = async (req, res, next) => {
     try {
