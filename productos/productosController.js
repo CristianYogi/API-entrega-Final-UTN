@@ -100,7 +100,7 @@ const getProductoByTitle = async (req, res, next) => {
         const result = await Productos.find({title: {$regex : req.params.title}}, productoData)
         
         if (result.length) {
-            res.status(200).json({result})
+            res.status(200).json({result, status: 200})
         } else {
             next()
         }
