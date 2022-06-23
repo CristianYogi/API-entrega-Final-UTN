@@ -1,6 +1,7 @@
 const {send} = require("express/lib/response")
 const {User} = require("./usersModel")
 const nodemailer = require("nodemailer")
+const data = require('../storage/infoExtra.json')
 
 const {hashPassword, checkPassword} = require("../utlis/passwordHandler")
 

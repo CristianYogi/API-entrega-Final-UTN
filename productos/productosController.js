@@ -36,6 +36,30 @@ const getProductById = async (req, res, next) => {
     }
 }
 
+const getProductsByCriteria = async(req, res, next) => {
+    console.log(req.body)
+    try {   
+        const productoData = {
+            __v: 0,
+            createdAt: 0,
+            updatedAt: 0
+        }
+        const result = await Productos.find({categoria: {$regex: req.body.categoria}, precio : {$gte: req.body.value[0], $lte: req.body.value[1]}}, productoData)
+
+        if (result.length) {
+            res.status(200).json(result)
+        } else {
+            next()
+        }
+
+    } catch (error) {
+        error.status = '500'
+        error.message = 'Internal Server Error'
+        next()
+    }
+
+}
+
 const getAllProductos = async (req, res, next) => {
     try {   
         const productoData = {
@@ -89,5 +113,6 @@ module.exports = {
     postProductos,
     getAllProductos,
     getProductoByTitle,
-    getProductById
+    getProductById,
+    getProductsByCriteria
 }

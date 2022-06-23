@@ -1,0 +1,7 @@
+{   
+    "data":{
+        "categorias" : ["Electrodomesticos","Limpieza", "Juegos", "Perisfericos", "Ropa", "Muebles"],
+        "ubicacion": ["Villa Urquiza", "Belgrano", "Caballito", "Mataderos", "Saavedra", "Retiro", "La esquina"]
+    }
+}
+
