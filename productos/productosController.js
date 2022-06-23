@@ -38,7 +38,7 @@ const getProductById = async (req, res, next) => {
 
 const getProductsByCriteria = async(req, res, next) => {
     const data = {
-        categoria: req.params.categoria || "",
+        categoria: req.params.categoria !== todo ? req.params.categoria : "",
         min: req.params.min || 0,
         max: req.params.max || 50000
     }
@@ -52,7 +52,7 @@ const getProductsByCriteria = async(req, res, next) => {
         const result = await Productos.find({categoria: {$regex: data.categoria}, precio : {$gte:data.min, $lte:data.max}}, productoData)
 
         if (result.length) {
-            res.status(200).json(result)
+            res.status(200).json({result, status: 200})
         } else {
             next()
         }
@@ -75,7 +75,7 @@ const getAllProductos = async (req, res, next) => {
         const result = await Productos.find({}, productoData)
 
         if (result.length) {
-            res.status(200).json(result)
+            res.status(200).json({result, status: 200})
         } else {
             next()
         }
