@@ -12,7 +12,7 @@ router.post("/", isAuth ,postProductos)
 
 router.get("/:id", getProductById)
 
-router.get("/search", getProductsByCriteria)
+router.get("/search/:min/:max/:categoria", getProductsByCriteria)
 
 router.get("/search/:title", getProductoByTitle)
 
