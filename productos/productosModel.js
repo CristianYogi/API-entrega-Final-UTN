@@ -9,7 +9,7 @@ const ProductosSchema = new Schema({
     categoria: {type: String, required: true},
     precio : {type: Number, require: true},
     img: [{link : String, deleteHash: String, id: String}],
-    caracteristica: {type: String}
+    caracteristicas: {type: String}
 },
     {timestamps: true} //crea campos de el momento en que fue creado o actualizado
 )
