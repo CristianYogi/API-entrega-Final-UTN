@@ -3,7 +3,7 @@ const { render } = require("express/lib/response")
 
 const isAuth = require("../middleware/isAuth")
 
-const {postProductos, getAllProductos, getProductoByTitle, getProductById, getProductsByCriteria} = require ("./productosController")
+const {deleteProduct ,postProductos, getAllProductos, getProductoByTitle, getProductById, getProductsByCriteria} = require ("./productosController")
 
 
 router.get("/", getAllProductos)
@@ -15,6 +15,8 @@ router.get("/:id", getProductById)
 router.get("/search/:min/:max/:categoria", getProductsByCriteria)
 
 router.get("/search/:title", getProductoByTitle)
+
+router.delete("/:id", isAuth, deleteProduct)
 
 
 

@@ -1,6 +1,27 @@
 const Productos = require("./productosModel")
 const mongoose = require('mongoose');
 
+
+const deleteProduct = async (req, res, next) => {
+    try {
+        
+        if(req.params.id.length != 24) return next()
+
+        const result = await Productos.deleteOne({_id: req.params.id})
+        
+        if(result.deletedCount){
+            res.status(200).json({message: "Producto Eliminado", status: 200, result})
+        }else{
+            next()
+        }
+        
+    } catch (error) {
+        error.status = 500
+        error.message = "Interal Server Error"
+        next(error)
+    }
+}
+
 const postProductos = async (req, res, next) => {
     const newProductos = new Productos({
         ...req.body,
@@ -120,5 +141,6 @@ module.exports = {
     getAllProductos,
     getProductoByTitle,
     getProductById,
-    getProductsByCriteria
+    getProductsByCriteria,
+    deleteProduct
 }
