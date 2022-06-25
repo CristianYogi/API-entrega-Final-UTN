@@ -83,7 +83,7 @@ const getUserById = async (req, res, next) => {
                     foreignField: "userId",
                     as: "productos",
                     pipeline: [
-                        {$project: {__v: 0, _id: 0, userId: 0, createdAt: 0, updatedAt: 0}}
+                        {$project: {__v: 0, userId: 0, createdAt: 0, updatedAt: 0}}
                     ]
                 }        
             },
