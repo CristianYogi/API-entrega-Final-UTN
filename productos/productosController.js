@@ -2,6 +2,23 @@ const Productos = require("./productosModel")
 const mongoose = require('mongoose');
 
 
+
+const updateProduct = async (req, res, next) => {
+    try {
+
+        if(req.params.id.length != 24) return next() //LOS ID TIENEN QUE SER DE 24 CARACTERES HEXADECIMALES O LA BASE DE DATOS ME DEVUELVE UN ERROR
+        
+        const result = await Productos.findByIdAndUpdate(req.params.id, req.body)
+
+        !result ? next() : res.status(200).json({result, status: 200})
+        
+    } catch (error) {
+        error.status = 500
+        error.message = 'Internal Server Error'
+        next(error)
+    }
+}
+
 const deleteProduct = async (req, res, next) => {
     try {
         
@@ -142,5 +159,6 @@ module.exports = {
     getProductoByTitle,
     getProductById,
     getProductsByCriteria,
-    deleteProduct
+    deleteProduct,
+    updateProduct
 }
