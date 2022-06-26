@@ -18,7 +18,7 @@ router.get("/search/:title", getProductoByTitle)
 
 router.delete("/:id", isAuth, deleteProduct)
 
-router.put("modificar/:id", isAuth, updateProduct)
+router.put("/modificar/:id", isAuth, updateProduct)
 
 
 

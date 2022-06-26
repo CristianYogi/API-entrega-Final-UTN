@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 
 const updateProduct = async (req, res, next) => {
+    console.log("hola")
     try {
 
         if(req.params.id.length != 24) return next() //LOS ID TIENEN QUE SER DE 24 CARACTERES HEXADECIMALES O LA BASE DE DATOS ME DEVUELVE UN ERROR
