@@ -136,7 +136,7 @@ const getProductoByTitle = async (req, res, next) => {
             createdAt: 0,
             updatedAt: 0
         }
-        const result = await Productos.find({title: {$regex : req.params.title}}, productoData)
+        const result = await Productos.find({title: {$regex : new RegExp(req.params.title, "i")}}, productoData)
         
         if (result.length) {
             res.status(200).json({result, status: 200})
@@ -147,7 +147,7 @@ const getProductoByTitle = async (req, res, next) => {
     } catch (error) {
         error.status = '500'
         error.message = 'Internal Server Error'
-        next()
+        next(error)
     }
 
 
