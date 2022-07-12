@@ -10,7 +10,7 @@ const updateProduct = async (req, res, next) => {
         
         const result = await Productos.findByIdAndUpdate(req.params.id, req.body)
 
-        !result ? next() : res.status(200).json({result, status: 200})
+        !result ? next() : res.status(200).json({result, status: 200, message: 'Producto Actualizado Correctamente'})
         
     } catch (error) {
         error.status = 500
