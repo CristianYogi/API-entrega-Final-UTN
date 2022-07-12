@@ -92,7 +92,7 @@ const getUserById = async (req, res, next) => {
             ]
             )
             if (result) {
-                res.status(200).json(result)
+                res.status(200).json({result, status : 200})
             } else {
                 return next()
             }
@@ -105,7 +105,7 @@ const getUserById = async (req, res, next) => {
     }
 }
 
-const updateUser = async (req, res, next) => {
+const updateUser = async (req, res, next) => { //NO LO USO
     try {
 
         if(req.params.id.length != 24) return next() //LOS ID TIENEN QUE SER DE 24 CARACTERES HEXADECIMALES O LA BASE DE DATOS ME DEVUELVE UN ERROR
@@ -123,7 +123,6 @@ const updateUser = async (req, res, next) => {
 
 
 const registerUser = async (req, res, next) => {
-    ;
     
     const password = await hashPassword(req.body.password)
 
@@ -204,9 +203,7 @@ const login = async (req, res, next) => {
                     user
                 }
 
-                res.status(200).json({message: `Te logeaste como ${
-                        user.name
-                    }.`, Token_Info: tokenData, status: 200})
+                res.status(200).json({Token_Info: tokenData, status: 200, message: 'Logeado Correctamente'})
 
             } else {
                 let error = new Error("Contraseña incorrecta")

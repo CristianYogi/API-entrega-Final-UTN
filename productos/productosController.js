@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 
 
 const updateProduct = async (req, res, next) => {
-    console.log("hola")
     try {
 
         if(req.params.id.length != 24) return next() //LOS ID TIENEN QUE SER DE 24 CARACTERES HEXADECIMALES O LA BASE DE DATOS ME DEVUELVE UN ERROR
@@ -51,7 +50,7 @@ const postProductos = async (req, res, next) => {
             res.message = "Hubo un error al cargar el producto."
             res.send(error)
         } else {
-            res.status(200).json({message: "Producto Cargado Correctamente"})
+            res.status(200).json({message: "Producto Cargado Correctamente", status: 200})
         }
     })
 
